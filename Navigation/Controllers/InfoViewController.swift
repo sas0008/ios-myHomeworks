@@ -13,7 +13,6 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         setupButton()
-        goToInfoAler()
     }
     
     private lazy var buttonInfo: UIButton = {
@@ -37,14 +36,14 @@ class InfoViewController: UIViewController {
         }
     
     @objc private func goToInfoAler() {
-        
+
         let avc = UIAlertController(title: "Controler", message: "Hello world", preferredStyle: .alert)
-       
+
         avc.addAction(UIAlertAction(title: "Canel", style: .cancel){ _ in
             avc.dismiss(animated: true)
             print("Нажал на Canel")
         })
-        
+
         avc.addAction(UIAlertAction(title: "Ok", style: .default){ _ in
             avc.dismiss(animated: true)
             print("Нажал на Ok")
@@ -52,7 +51,6 @@ class InfoViewController: UIViewController {
         
         self.present(avc, animated: true)
         
-        
         }
-
+    
 }

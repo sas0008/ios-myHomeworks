@@ -9,9 +9,10 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let barBtn = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(goToInfo))
+        self.navigationItem.rightBarButtonItem = barBtn
         setupView()
     }
     
@@ -21,8 +22,10 @@ class PostViewController: UIViewController {
         self.view.backgroundColor = .systemMint
         self.navigationItem.title = titlePost
         }
-
+    
+    @objc func goToInfo(_ sender: UIButton) {
+        let infoViewController = InfoViewController()
+        infoViewController.modalPresentationStyle = .formSheet
+        present(infoViewController, animated: true)
+    }
 }
-
-
-

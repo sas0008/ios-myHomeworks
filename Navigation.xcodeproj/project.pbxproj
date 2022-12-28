@@ -76,9 +76,9 @@
 		E27AA6F8295208F50079ADF7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E27AA6F42950C2D10079ADF7 /* FeedViewController.swift */,
 				E27AA6FE29538E960079ADF7 /* InfoViewController.swift */,
 				E27AA6F92952094F0079ADF7 /* PostViewController.swift */,
+				E27AA6F42950C2D10079ADF7 /* FeedViewController.swift */,
 				E27AA6F62950C2E80079ADF7 /* ProfileViewController.swift */,
 			);
 			path = Controllers;

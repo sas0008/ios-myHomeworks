@@ -14,11 +14,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemRed
         
-        let camera = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(goToInfo))
-        self.navigationItem.rightBarButtonItem = camera
-
         setupButton()
-        buttonAction()
     }
     
     var post = Post(title: "Мой пост")
@@ -48,11 +44,4 @@ class FeedViewController: UIViewController {
             postViewController.titlePost = post.title
             self.navigationController?.pushViewController(postViewController, animated: true)
         }
-    
-    @objc func goToInfo(_ sender: UIButton) {
-        let infoViewController = InfoViewController()
-        infoViewController.title = "Info"
-        self.navigationController?.pushViewController(infoViewController, animated: true)
-    }
-    
 }
