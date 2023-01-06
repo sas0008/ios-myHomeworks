@@ -39,6 +39,15 @@ class FeedViewController: UIViewController {
             self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     @objc private func buttonAction() {
             let postViewController = PostViewController()
             postViewController.titlePost = post.title
