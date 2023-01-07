@@ -36,35 +36,54 @@ class ProfileHeaderView: UIView {
         return statusLabel
     }
     
-//    private var myTextFields: UITextField {
-//        let myTextFields = UITextField()
-//        myTextFields.frame = CGRect(x: 180, y: 260, width: 220, height: 30)
-//        myTextFields.borderStyle = .roundedRect
-//        myTextFields.placeholder = "test"
-//        myTextFields.layer.cornerRadius = 30
-//        return myTextFields
+    private var myTextFields: UITextField {
+        let myTextFields = UITextField()
+        myTextFields.frame = CGRect(x: 180, y: 260, width: 220, height: 40)
+        myTextFields.borderStyle = .roundedRect
+        myTextFields.placeholder = "Новый статус"
+        myTextFields.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        myTextFields.layer.cornerRadius = 12
+        myTextFields.layer.borderWidth = 1
+        myTextFields.layer.borderColor = UIColor.black.cgColor
+        myTextFields.layer.masksToBounds = true
+        myTextFields.autocorrectionType = .no
+        return myTextFields
+    }
+    
+    private var myButton: UIButton {
+        let myButton = UIButton()
+            myButton.frame = CGRect(x: 27, y: 310, width: 380, height: 50)
+            myButton.backgroundColor = .blue
+            myButton.layer.cornerRadius = 4
+            myButton.setTitle("Set status", for: .normal)
+            myButton.addTarget(self, action: #selector(btnKlick), for: .touchUpInside)
+        return myButton
+    }
+    
+    @objc func btnKlick(_ sender: UIButton){
+        print(myTextFields.text ?? "")
+    }
+    
+    
+//    func setupLayout() {
+//        addSubview(img)
+//        addSubview(myLabel)
+//        addSubview(statusLabel)
+//        addSubview(myTextFields)
+//        addSubview(myButton)
 //    }
     
-//    private var myButton: UIButton {
-//        let myButton = UIButton()
-//        myButton.frame = CGRect(x: 27, y: 310, width: 380, height: 50)
-//        myButton.backgroundColor = .blue
-//        myButton.layer.cornerRadius = 4
-//        myButton.setTitle("Set status", for: .normal)
-//        myButton.addTarget(self, action: #selector(getter: UIEvent.allTouches), for: .touchUpInside)
-//        return myButton
-//    }
-//
-//    @objc func buttonPressed() {
-//        print()
-//    }
-    
-    
-    func setupLayout() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .lightGray
         addSubview(img)
         addSubview(myLabel)
         addSubview(statusLabel)
-//        addSubview(myTextFields)
-//        addSubview(myButton)
+        addSubview(myTextFields)
+        addSubview(myButton)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
