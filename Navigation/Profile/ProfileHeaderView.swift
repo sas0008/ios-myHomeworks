@@ -36,7 +36,7 @@ class ProfileHeaderView: UIView {
         return statusLabel
     }
     
-    private var myTextFields: UITextField {
+    private var myTextFields: UITextField = {
         let myTextFields = UITextField()
         myTextFields.frame = CGRect(x: 180, y: 260, width: 220, height: 40)
         myTextFields.borderStyle = .roundedRect
@@ -48,7 +48,7 @@ class ProfileHeaderView: UIView {
         myTextFields.layer.masksToBounds = true
         myTextFields.autocorrectionType = .no
         return myTextFields
-    }
+    }()
     
     private var myButton: UIButton {
         let myButton = UIButton()
@@ -64,14 +64,13 @@ class ProfileHeaderView: UIView {
         print(myTextFields.text ?? "")
     }
     
-    
-//    func setupLayout() {
-//        addSubview(img)
-//        addSubview(myLabel)
-//        addSubview(statusLabel)
-//        addSubview(myTextFields)
-//        addSubview(myButton)
-//    }
+    func setupLayout() {
+        addSubview(img)
+        addSubview(myLabel)
+        addSubview(statusLabel)
+        addSubview(myTextFields)
+        addSubview(myButton)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
