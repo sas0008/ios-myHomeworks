@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    private lazy var img: UIImageView = {
+    private lazy var avatarImageView: UIImageView = {
         let img = UIImageView()
         img.image = UIImage(named: "1")
         img.frame = CGRect(x: 16, y: 120, width: 150, height: 150)
@@ -17,10 +17,11 @@ class ProfileHeaderView: UIView {
         img.clipsToBounds = true
         img.layer.borderWidth = 3
         img.layer.borderColor = UIColor.white.cgColor
+        img.translatesAutoresizingMaskIntoConstraints = false
         return img
     }()
     
-    private var myLabel: UILabel {
+    private var fullNameLabel: UILabel {
         let myLabel = UILabel()
         myLabel.frame = CGRect(x: 180, y: 120, width: 200, height: 40)
         myLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -36,7 +37,7 @@ class ProfileHeaderView: UIView {
         return statusLabel
     }
     
-    private var myTextFields: UITextField = {
+    private var statusTextField: UITextField = {
         let myTextFields = UITextField()
         myTextFields.frame = CGRect(x: 180, y: 260, width: 220, height: 40)
         myTextFields.borderStyle = .roundedRect
@@ -50,7 +51,7 @@ class ProfileHeaderView: UIView {
         return myTextFields
     }()
     
-    private var myButton: UIButton {
+    private var setStatusButton: UIButton {
         let myButton = UIButton()
             myButton.frame = CGRect(x: 27, y: 310, width: 380, height: 50)
             myButton.backgroundColor = .blue
@@ -61,28 +62,36 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func btnKlick(_ sender: UIButton){
-        print(myTextFields.text ?? "")
+        print(statusTextField.text ?? "")
     }
     
     func setupLayout() {
-        addSubview(img)
-        addSubview(myLabel)
+        addSubview(avatarImageView)
+        addSubview(fullNameLabel)
         addSubview(statusLabel)
-        addSubview(myTextFields)
-        addSubview(myButton)
+        addSubview(statusTextField)
+        addSubview(setStatusButton)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .lightGray
-        addSubview(img)
-        addSubview(myLabel)
+        addSubview(avatarImageView)
+        addSubview(fullNameLabel)
         addSubview(statusLabel)
-        addSubview(myTextFields)
-        addSubview(myButton)
+        addSubview(statusTextField)
+        addSubview(setStatusButton)
+        
+        NSLayoutConstraint.activate([
+        
+            avatarImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30)
+        
+        ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+

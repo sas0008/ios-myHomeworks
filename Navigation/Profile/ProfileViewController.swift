@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         profileHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,5 +31,4 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
-    
 }
