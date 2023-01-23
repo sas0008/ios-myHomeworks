@@ -26,6 +26,7 @@ class ProfileHeaderView: UIView {
         myLabel.frame = CGRect(x: 180, y: 120, width: 200, height: 40)
         myLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         myLabel.text = "Hipster Anonymous"
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
         return myLabel
     }
     
@@ -34,6 +35,7 @@ class ProfileHeaderView: UIView {
         statusLabel.frame = CGRect(x: 180, y: 210, width: 200, height: 40)
         statusLabel.text = "Waiting for something..."
         statusLabel.font = UIFont.systemFont(ofSize: 16, weight: .thin)
+//        statusLabel.translatesAutoresizingMaskIntoConstraints = false
         return statusLabel
     }
     
@@ -48,6 +50,7 @@ class ProfileHeaderView: UIView {
         myTextFields.layer.borderColor = UIColor.black.cgColor
         myTextFields.layer.masksToBounds = true
         myTextFields.autocorrectionType = .no
+//        myTextFields.translatesAutoresizingMaskIntoConstraints = false
         return myTextFields
     }()
     
@@ -58,6 +61,8 @@ class ProfileHeaderView: UIView {
             myButton.layer.cornerRadius = 4
             myButton.setTitle("Set status", for: .normal)
             myButton.addTarget(self, action: #selector(btnKlick), for: .touchUpInside)
+//            myButton.translatesAutoresizingMaskIntoConstraints = false
+        
         return myButton
     }
     
@@ -83,10 +88,19 @@ class ProfileHeaderView: UIView {
         addSubview(setStatusButton)
         
         NSLayoutConstraint.activate([
-        
-            avatarImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30)
-        
+
+            avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 150),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 150),
+            
+            fullNameLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            fullNameLabel.widthAnchor.constraint(equalToConstant: 200),
+            fullNameLabel.heightAnchor.constraint(equalToConstant: 40)
+
         ])
+    
     }
     
     required init?(coder: NSCoder) {
