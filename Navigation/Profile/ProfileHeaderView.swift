@@ -21,27 +21,27 @@ class ProfileHeaderView: UIView {
         return img
     }()
     
-    private var fullNameLabel: UILabel {
+    private var fullNameLabel: UILabel = {
         let myLabel = UILabel()
-        myLabel.frame = CGRect(x: 180, y: 120, width: 200, height: 40)
+//        myLabel.frame = CGRect(x: 180, y: 120, width: 200, height: 40)
         myLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         myLabel.text = "Hipster Anonymous"
         myLabel.translatesAutoresizingMaskIntoConstraints = false
         return myLabel
-    }
+    }()
     
-    private var statusLabel: UILabel {
+    private var statusLabel: UILabel = {
         let statusLabel = UILabel()
-        statusLabel.frame = CGRect(x: 180, y: 210, width: 200, height: 40)
+//        statusLabel.frame = CGRect(x: 180, y: 210, width: 200, height: 40)
         statusLabel.text = "Waiting for something..."
         statusLabel.font = UIFont.systemFont(ofSize: 16, weight: .thin)
-//        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
         return statusLabel
-    }
+    }()
     
     private var statusTextField: UITextField = {
         let myTextFields = UITextField()
-        myTextFields.frame = CGRect(x: 180, y: 260, width: 220, height: 40)
+//        myTextFields.frame = CGRect(x: 180, y: 260, width: 220, height: 40)
         myTextFields.borderStyle = .roundedRect
         myTextFields.placeholder = "Новый статус"
         myTextFields.font = UIFont.systemFont(ofSize: 15, weight: .regular)
@@ -50,7 +50,7 @@ class ProfileHeaderView: UIView {
         myTextFields.layer.borderColor = UIColor.black.cgColor
         myTextFields.layer.masksToBounds = true
         myTextFields.autocorrectionType = .no
-//        myTextFields.translatesAutoresizingMaskIntoConstraints = false
+        myTextFields.translatesAutoresizingMaskIntoConstraints = false
         return myTextFields
     }()
     
@@ -70,13 +70,13 @@ class ProfileHeaderView: UIView {
         print(statusTextField.text ?? "")
     }
     
-    func setupLayout() {
-        addSubview(avatarImageView)
-        addSubview(fullNameLabel)
-        addSubview(statusLabel)
-        addSubview(statusTextField)
-        addSubview(setStatusButton)
-    }
+//    func setupLayout() {
+//        addSubview(avatarImageView)
+//        addSubview(fullNameLabel)
+//        addSubview(statusLabel)
+//        addSubview(statusTextField)
+//        addSubview(setStatusButton)
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,13 +94,19 @@ class ProfileHeaderView: UIView {
             avatarImageView.heightAnchor.constraint(equalToConstant: 150),
             avatarImageView.widthAnchor.constraint(equalToConstant: 150),
             
-            fullNameLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
-            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            fullNameLabel.widthAnchor.constraint(equalToConstant: 200),
-            fullNameLabel.heightAnchor.constraint(equalToConstant: 40)
-
+            fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            
+            statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.topAnchor, constant: 100),
+            
+            statusTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
+            statusTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: 20),
+            
+            
+            
         ])
-    
     }
     
     required init?(coder: NSCoder) {
