@@ -13,14 +13,20 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+//        view.baeckgroundColor = .lightGray
         view.addSubview(profileHeaderView)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        profileHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            profileHeaderView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -23,7 +23,6 @@ class ProfileHeaderView: UIView {
     
     private var fullNameLabel: UILabel = {
         let myLabel = UILabel()
-//        myLabel.frame = CGRect(x: 180, y: 120, width: 200, height: 40)
         myLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         myLabel.text = "Hipster Anonymous"
         myLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +31,6 @@ class ProfileHeaderView: UIView {
     
     private var statusLabel: UILabel = {
         let statusLabel = UILabel()
-//        statusLabel.frame = CGRect(x: 180, y: 210, width: 200, height: 40)
         statusLabel.text = "Waiting for something..."
         statusLabel.font = UIFont.systemFont(ofSize: 16, weight: .thin)
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +39,6 @@ class ProfileHeaderView: UIView {
     
     private var statusTextField: UITextField = {
         let myTextFields = UITextField()
-//        myTextFields.frame = CGRect(x: 180, y: 260, width: 220, height: 40)
         myTextFields.borderStyle = .roundedRect
         myTextFields.placeholder = "Новый статус"
         myTextFields.font = UIFont.systemFont(ofSize: 15, weight: .regular)
@@ -54,17 +51,15 @@ class ProfileHeaderView: UIView {
         return myTextFields
     }()
     
-    private var setStatusButton: UIButton {
+    private lazy var setStatusButton: UIButton = {
         let myButton = UIButton()
-            myButton.frame = CGRect(x: 27, y: 310, width: 380, height: 50)
             myButton.backgroundColor = .blue
             myButton.layer.cornerRadius = 4
             myButton.setTitle("Set status", for: .normal)
             myButton.addTarget(self, action: #selector(btnKlick), for: .touchUpInside)
-//            myButton.translatesAutoresizingMaskIntoConstraints = false
-        
+            myButton.translatesAutoresizingMaskIntoConstraints = false
         return myButton
-    }
+    }()
     
     @objc func btnKlick(_ sender: UIButton){
         print(statusTextField.text ?? "")
@@ -100,11 +95,14 @@ class ProfileHeaderView: UIView {
             statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.topAnchor, constant: 100),
             
-            statusTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
+            statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
-            statusTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: 20),
+            statusTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -20),
             
-            
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 20),
+            setStatusButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
+            setStatusButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -20),
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
     }
