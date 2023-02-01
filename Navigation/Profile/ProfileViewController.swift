@@ -10,11 +10,20 @@ import UIKit
 class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     let profileHeaderView = ProfileHeaderView()
+    
+    private lazy var newBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Кнопка", for: .normal)
+        btn.backgroundColor = .red
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.baeckgroundColor = .lightGray
         view.addSubview(profileHeaderView)
+        view.addSubview(newBtn)
     }
     
     override func viewWillLayoutSubviews() {
@@ -24,8 +33,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            profileHeaderView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+            newBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            newBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            newBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
     

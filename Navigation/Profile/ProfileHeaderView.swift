@@ -54,8 +54,10 @@ class ProfileHeaderView: UIView {
     private lazy var setStatusButton: UIButton = {
         let myButton = UIButton()
             myButton.backgroundColor = .blue
-            myButton.layer.cornerRadius = 4
+            myButton.layer.cornerRadius = 12
             myButton.setTitle("Set status", for: .normal)
+            myButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+            myButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
             myButton.addTarget(self, action: #selector(btnKlick), for: .touchUpInside)
             myButton.translatesAutoresizingMaskIntoConstraints = false
         return myButton
@@ -85,23 +87,25 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
 
             avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
-            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImageView.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -16),
             avatarImageView.heightAnchor.constraint(equalToConstant: 150),
             avatarImageView.widthAnchor.constraint(equalToConstant: 150),
             
             fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
-            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             
             statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
-            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.topAnchor, constant: 100),
+            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -60),
             
             statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20),
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
+            statusTextField.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -15),
             statusTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -20),
             
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 20),
             setStatusButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
             setStatusButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -20),
+            setStatusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
